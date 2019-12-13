@@ -1,0 +1,45 @@
+{
+  "name": "analytics-js-sdk",
+  "version": "0.0.1",
+  "description": "Qilin-Uttu Analytics JS SDK",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "parcel build src/index.ts --out-file analytics-js-sdk.js",
+    "build:dev": "NODE_ENV=development parcel build src/index.ts --no-minify --out-file analytics-js-sdk.js",
+    "lint": "eslint './**/*.{ts,tsx}'",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qilin/analytics-js-sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qilin/analytics-js-sdk/issues"
+  },
+  "homepage": "https://github.com/analytics-js-sdk/js-sdk#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.{ts,tsx}": [
+      "yarn lint",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "eslint": "^6.4.0",
+    "husky": "^3.0.5",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.3.0",
+    "parcel-bundler": "^1.12.4",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
+  }
+}
