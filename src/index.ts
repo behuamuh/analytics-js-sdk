@@ -3,24 +3,35 @@ import getQilinUttu from './qilinUttu';
 
 if (win.quNamespace && win.quNamespace.length > 0) {
   const holderName = win.quNamespace.shift();
-  let holder = win[holderName];
-  // queue.q = new QilinUttu(queue.q, queueName);
-  const queue = holder.q || [];
+  const holder = win[holderName];
 
-  // UNDONE
-  const tracker = getQilinUttu();
+  const qilinUttu = getQilinUttu();
 
-  const commands: any = {
-    'init': tracker.init,
-  };
-
-  holder = function (...args: any) {
+  const applyFunc = (i: IArguments) => {
+    const args = [].slice.call(i);
     const methodName = args.shift();
-    commands[methodName].apply(tracker, args);
+
+    if (methodName === 'init') {
+      qilinUttu.init(args[0]);
+    }
+
+    if (methodName === 'trackPageView') {
+      console.log('track page view');
+    }
+
+    if (methodName === 'trackSession') {
+      console.log('track session');
+    }
+
+    if (methodName === 'trackCustomEvent') {
+      console.log('track custom event');
+    }
+
   };
 
-  // process existing queue
-  queue.forEach((i: IArguments) => {
-    holder.apply(tracker, i);
-  });
+  holder.q.forEach((i: IArguments) => applyFunc(i));
+
+  holder.q = {
+    push: applyFunc,
+  };
 }
