@@ -1,10 +1,8 @@
 import { win } from 'alias';
 
 const getQilinUttu = () => {
-  const init = () => {
-    console.log('init qilin uttu');
-    console.log(win.QILIN_UTTU_APP_KEY);
-    console.log(win.QILIN_UTTU_API_URL);
+  const init = (params: any) => {
+    console.log('init qilin uttu', params);
   };
 
   return {
@@ -12,4 +10,4 @@ const getQilinUttu = () => {
   };
 };
 
-export default getQilinUttu();
+export default getQilinUttu;
