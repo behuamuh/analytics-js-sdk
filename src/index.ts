@@ -1,9 +1,10 @@
-import { win } from 'alias';
+import { windowAlias } from 'alias';
+
 import QilinUttu from './qilinUttu';
 
-if (win.quNamespace && win.quNamespace.length > 0) {
-  const holderName = win.quNamespace.shift();
-  const holder = win[holderName];
+if (windowAlias.quNamespace && windowAlias.quNamespace.length > 0) {
+  const holderName = windowAlias.quNamespace.shift();
+  const holder = windowAlias[holderName];
 
   holder.q = QilinUttu(holder.q);
 }

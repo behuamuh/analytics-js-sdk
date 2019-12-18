@@ -1,5 +1,3 @@
-export const win = window as any;
-export const nav = window.navigator;
-export const doc = document;
-export const html = document.documentElement;
-export const body = document.body;
+export const windowAlias = window as any;
+export const navigatorAlias = window.navigator;
+export const documentAlias = document;
