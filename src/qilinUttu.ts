@@ -1,11 +1,35 @@
-const getQilinUttu = () => {
-  const init = (params: any) => {
-    console.log('init qilin uttu', params);
+import getTracker from './tracker';
+
+const QilinUttu = (beforeInitQueue: any) => {
+  let tracker: any;
+
+  const callFunc = (i: IArguments) => {
+    const args = [].slice.call(i);
+    const methodName = args.shift();
+
+    if (methodName === 'init') {
+      tracker = getTracker(args[0]);
+    }
+
+    if (methodName === 'trackPageView') {
+      tracker.trackPageView();
+    }
+
+    if (methodName === 'trackSession') {
+      tracker.trackSession();
+    }
+
+    if (methodName === 'trackCustomEvent') {
+      tracker.trackCustomEvent();
+    }
+
   };
 
-  return {
-    init,
+  beforeInitQueue.forEach((i: IArguments) => callFunc(i));
+
+  beforeInitQueue = {
+    push: callFunc,
   };
 };
 
-export default getQilinUttu;
+export default QilinUttu;
