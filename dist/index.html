@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <script type="text/javascript">
+    ; (function (p, l, o, w, i, n, g) {
+      if (!p[i]) {
+        p.quNamespace = p.quNamespace || [];
+        p.quNamespace.push(i);
+        p[i] = function () {
+          (p[i].q = p[i].q || []).push(arguments)
+        };
+        p[i].q = p[i].q || [];
+        n = l.createElement(o); g = l.getElementsByTagName(o)[0]; n.async = 1;
+        n.src = w; g.parentNode.insertBefore(n, g)
+      }
+    }(window, document, 'script', './qilin-uttu.js', 'qu'));
+
+    qu('init', {
+      collectorUrl: '/track',
+      siteId: 'mySiteId',
+    });
+
+    qu('trackPageView')
+    qu('trackSession')
+
+
+    qu('trackCustomEvent', {
+      key: 'eventKey',
+      value: 'value',
+    });
+
+  </script>
+</head>
+
+<body>
+  Analytics SDK Example
+</body>
+
+</html>
